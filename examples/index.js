@@ -2,10 +2,12 @@ import path from 'path'
 
 import { createExamples } from '@meltwater/examplr'
 
-import todo from './todo.js'
+import { invoke } from './invoke.js'
+
+process.env.AWS_SDK_LOAD_CONFIG = 'true'
 
 const examples = {
-  todo
+  invoke
 }
 
 const envVars = ['LOG_LEVEL', 'LOG_FILTER', 'LOG_OUTPUT_MODE']
