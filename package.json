@@ -1,7 +1,7 @@
 {
-  "name": "@pureskillgg/makenew-jsmodule",
-  "version": "2.3.7",
-  "description": "Package skeleton for a JavaScript module.",
+  "name": "@pureskillgg/awsjs",
+  "version": "0.0.0",
+  "description": "Node.js clients and utilities for AWS.",
   "type": "module",
   "main": "dist/index.cjs",
   "exports": {
@@ -13,9 +13,9 @@
   "keywords": [
     "node"
   ],
-  "homepage": "https://github.com/pureskillgg/makenew-jsmodule",
-  "bugs": "https://github.com/pureskillgg/makenew-jsmodule/issues",
-  "repository": "pureskillgg/makenew-jsmodule",
+  "homepage": "https://github.com/pureskillgg/awsjs",
+  "bugs": "https://github.com/pureskillgg/awsjs/issues",
+  "repository": "pureskillgg/awsjs",
   "license": "SEE LICENSE IN LICENSE.txt",
   "author": {
     "name": "PureSkill.gg",
