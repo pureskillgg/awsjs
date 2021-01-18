@@ -45,7 +45,6 @@
     "build:spec": "npm-run-all --parallel build:spec:*",
     "build:spec:index": "babel --source-maps --out-file-extension .cjs --out-dir .dist index.js",
     "build:spec:lib": "babel --source-maps --out-file-extension .cjs --out-dir .dist/lib lib",
-    "build:spec:test": "babel --source-maps --out-file-extension .cjs --out-dir .dist/test test",
     "preversion": "npm-run-all --parallel lint test build",
     "postversion": "git push --follow-tags",
     "example": "node examples",
