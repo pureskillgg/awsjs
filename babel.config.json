@@ -4,7 +4,8 @@
       "babel-plugin-add-import-extension",
       { "extension": "cjs", "replace": true }
     ],
-    ["@babel/plugin-syntax-class-properties"]
+    ["@babel/plugin-syntax-class-properties"],
+    ["@babel/plugin-proposal-private-methods"]
   ],
   "presets": [
     [
