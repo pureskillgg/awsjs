@@ -72,6 +72,7 @@
     "@babel/plugin-syntax-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.0.0",
     "@meltwater/examplr": "^6.0.0",
+    "@meltwater/tau": "^2.0.0",
     "ava": "^3.3.0",
     "babel-plugin-add-import-extension": "^1.4.3",
     "del-cli": "^3.0.0",
