@@ -1,0 +1,39 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2021-01-26T00:00:41.155Z",
+      "eventName": "ObjectCreated:Post",
+      "userIdentity": {
+        "principalId": "AWS:AROAZJNSB773XN6CNLFAV:70ddd8ac6dd041bf923c20b88909d7bb"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "52.3.8.180"
+      },
+      "responseElements": {
+        "x-amz-request-id": "24A37662E3E71336",
+        "x-amz-id-2": "fwTAzgjxaBPbTFNWtYXejmXu71AFq8ckxwDjj84GH+u7Y52rJaPkhewwUu5fDcmREIw3ST01mF5I/67uPUWu4qghRj2Vr1kP"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "tf-s3-queue-20190602030557950200000003",
+        "bucket": {
+          "name": "pureskillgg-csgo-production-metademo-0",
+          "ownerIdentity": {
+            "principalId": "A2DGTH8FSCK13C"
+          },
+          "arn": "arn:aws:s3:::pureskillgg-csgo-production-metademo-0"
+        },
+        "object": {
+          "key": "fKY3cHZw8qROe9DGp5MF/metademo",
+          "size": 3414,
+          "eTag": "78129193f1810bf5a5c71088ff70aac4",
+          "versionId": "pR7CV.T13afX.oOXKcsOo_GZrirLODy.",
+          "sequencer": "00600F5BAC382F6142"
+        }
+      }
+    }
+  ]
+}

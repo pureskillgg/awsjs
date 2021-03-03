@@ -1,0 +1,28 @@
+{
+  "Records": [
+    {
+      "messageId": "ebbb643a-d30d-44e8-94c0-c28c9c1e6e4c",
+      "receiptHandle": "AQEB3hQ1Ty8JiNMa8LZ8Lid7L3SoJJXJOCKjHL8z+m4580oWnmWTPrPU+/bZWqhCtXCG6BVvO8blExzUjNOF0jHMKLq2t/nKwtKyJVTEr7dk7hB+bi7D7lkEyDtQN9w9pjlAr2RL6pYCJMx3jzq4paPR71FU3Dxjk1iAwGOwmDLox0I2T8ROX+mEpKJf1Dt9Hy0MFvb5JyKmQtjptLzdHtQ8IGCGpSXSVlMRJ//98dK8zJUJbZlKmOx6iRcbTaD2cOxYILqbQCjLiH4Ycwrlt/Mn/JwenCORTDnXfwHcemCGVk1w6+c1sCbbcXU3jNIP5M0dZKnAaI5wwZr2UYoz6vJfV2fex2zH8x43X9fnDWaK/mi5EHVLyPQSSGSoLyGvedAPIbqu+WN5DmPuAoCNQaGK255b6TfgDQAz2dULIXGfet/xyFefOcJxNLmrWy879JU+",
+      "body": "{\"Records\":[{\"eventVersion\":\"2.1\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"us-east-1\",\"eventTime\":\"2021-03-02T23:22:32.202Z\",\"eventName\":\"ObjectCreated:CompleteMultipartUpload\",\"userIdentity\":{\"principalId\":\"AWS:AROAZJNSB7737ZOK7PBQC:csgo-nodejs-prod-metademoToDemo\"},\"requestParameters\":{\"sourceIPAddress\":\"54.85.139.100\"},\"responseElements\":{\"x-amz-request-id\":\"F9GP6KVMHGCXE6YA\",\"x-amz-id-2\":\"34JS/UCbTyXR3U/ScIAe4IstHNotoKzcf3RJv2mPV0mpRQosAcqJwWJUqZ57SfrvFSYIk1Wmc0+FeVu4Flcew0720AznJA6T5/HdvXL/HA4=\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"tf-s3-queue-20190430151033313600000002\",\"bucket\":{\"name\":\"pureskillgg-csgo-production-demo-0\",\"ownerIdentity\":{\"principalId\":\"A2DGTH8FSCK13C\"},\"arn\":\"arn:aws:s3:::pureskillgg-csgo-production-demo-0\"},\"object\":{\"key\":\"dWWiW8aiEDrcsWtzVm3K/demo\",\"size\":44865436,\"eTag\":\"5b26bbc64013fd31dcf30816be1445a0-9\",\"versionId\":\"bNm4Ew2MsOL_1dZIC50iiEBEBAp14IwF\",\"sequencer\":\"00603EC8BD06E58F35\"}}}]}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1614727361390",
+        "SenderId": "AROAZJNSB773VQEHLKQBG:csgo-scv-prod-ackDemo",
+        "ApproximateFirstReceiveTimestamp": "1614727361401"
+      },
+      "messageAttributes": {
+        "execId": {
+          "stringValue": "8e34738c-5326-470b-8069-230bd833a548",
+          "stringListValues": [],
+          "binaryListValues": [],
+          "dataType": "String"
+        }
+      },
+      "md5OfMessageAttributes": "02b98d226bb1d28d2e2e9dbdfd1d4c50",
+      "md5OfBody": "a273dc5560457cb9b4a60b8503296c6a",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-east-1:638712938487:pureskillgg-csgo-production-replay-input-demo-0",
+      "awsRegion": "us-east-1"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "Records": [
+    {
+      "messageId": "b31a4b21-8fd7-4993-8b01-eeff9abb7dba",
+      "receiptHandle": "AQEBQfGuwC6WSc40vtV3w4cp8yif4uNm169eyYOUDh/Be1S1e000kNqlwqSqxoMSsbK/6SAtDmqKWGKjLXeV5z2E/egzgpQBR//gorqjV/Q6q09FiYlN5uV8ztoKvDp9EgoqqBzdXEpHnCiKnRoKkSv04WLqgAI2GFjgooWxXxskiVi1VdC+FXi9jWlXVs8jYo661uM9IKBIOHWjJogvIQLF1C1wkhGFmS/PEChaRNqgCTrhpJMVJC7HxUtqqewb9lMcp7Z2/HJyGShGLQlw3WDq98vGpDmNV8abZWpgViKFu3/vrXqQOSpupt4vXT0S0mXfj3Z/qfEYXqFeP6Q/JFFyIo0jkJrjj/TDwSImryScD69OiJ40Z7oJtS5gX0x2Yf4b9YA+c2e+Ip53ENBiYVv8NFdC1xfAX0r2D41jBRGTwX3buHQKEGz6uMA7gGLmGJfz",
+      "body": "{\"Service\":\"Amazon S3\",\"Event\":\"s3:TestEvent\",\"Time\":\"2014-10-13T15:57:02.089Z\",\"Bucket\":\"bucketname\",\"RequestId\":\"5582815E1AEA5ADF\",\"HostId\":\"8cLeGAmw098X5cv4Zkwcmo8vvZa3eH3eKxsPzbB9wrR+YstdA6Knx4Ip8EXAMPLE\"}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1614717915977",
+        "SenderId": "AROAZJNSB773VQEHLKQBG:csgo-scv-prod-ackDemo",
+        "ApproximateFirstReceiveTimestamp": "1614717915987"
+      },
+      "messageAttributes": {
+        "execId": {
+          "stringValue": "ed4ba5ac-8d1d-4828-96a9-32366b56ae5e",
+          "stringListValues": [],
+          "binaryListValues": [],
+          "dataType": "String"
+        }
+      },
+      "md5OfMessageAttributes": "65cd38e9d70aae53a5f9cdff78bab683",
+      "md5OfBody": "5f01b2763282f5278f8c4ca3f829c587",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-east-1:638712938487:pureskillgg-csgo-production-replay-input-demo-0",
+      "awsRegion": "us-east-1"
+    }
+  ]
+}
