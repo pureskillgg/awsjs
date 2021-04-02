@@ -48,11 +48,14 @@
   "engines": {
     "node": ">=14.15.0"
   },
+  "resolutions": {
+    "aws-sdk": "2.804.0"
+  },
   "dependencies": {
     "@meltwater/mlabs-logger": "^8.0.0",
     "@meltwater/phi": "^4.0.0",
     "@meltwater/tau": "^2.0.0",
-    "aws-sdk": "2.771.0",
+    "aws-sdk": "^2.804.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
