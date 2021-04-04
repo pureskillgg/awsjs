@@ -121,6 +121,46 @@
     "@aws-sdk/util-waiter" "3.10.0"
     tslib "^2.0.0"
 
+"@aws-sdk/client-sqs@^3.11.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-sqs/-/client-sqs-3.11.0.tgz#428b91cdaa02ed1706e74df702eced489acee64d"
+  integrity sha512-eon+7wWlWV8P0bFLpYZi0IOePeRRV4hY0j+7bEdX4Jd4vheuBw9ZmNfl+GkKDTtSvDce5yVZ1SnRGqYnFZWMzQ==
+  dependencies:
+    "@aws-crypto/sha256-browser" "^1.0.0"
+    "@aws-crypto/sha256-js" "^1.0.0"
+    "@aws-sdk/config-resolver" "3.10.0"
+    "@aws-sdk/credential-provider-node" "3.11.0"
+    "@aws-sdk/fetch-http-handler" "3.10.0"
+    "@aws-sdk/hash-node" "3.10.0"
+    "@aws-sdk/invalid-dependency" "3.10.0"
+    "@aws-sdk/md5-js" "3.10.0"
+    "@aws-sdk/middleware-content-length" "3.10.0"
+    "@aws-sdk/middleware-host-header" "3.10.0"
+    "@aws-sdk/middleware-logger" "3.10.0"
+    "@aws-sdk/middleware-retry" "3.10.0"
+    "@aws-sdk/middleware-sdk-sqs" "3.10.0"
+    "@aws-sdk/middleware-serde" "3.10.0"
+    "@aws-sdk/middleware-signing" "3.10.0"
+    "@aws-sdk/middleware-stack" "3.10.0"
+    "@aws-sdk/middleware-user-agent" "3.10.0"
+    "@aws-sdk/node-config-provider" "3.10.0"
+    "@aws-sdk/node-http-handler" "3.10.0"
+    "@aws-sdk/protocol-http" "3.10.0"
+    "@aws-sdk/smithy-client" "3.10.0"
+    "@aws-sdk/types" "3.10.0"
+    "@aws-sdk/url-parser" "3.10.0"
+    "@aws-sdk/url-parser-native" "3.10.0"
+    "@aws-sdk/util-base64-browser" "3.10.0"
+    "@aws-sdk/util-base64-node" "3.10.0"
+    "@aws-sdk/util-body-length-browser" "3.10.0"
+    "@aws-sdk/util-body-length-node" "3.10.0"
+    "@aws-sdk/util-user-agent-browser" "3.10.0"
+    "@aws-sdk/util-user-agent-node" "3.10.0"
+    "@aws-sdk/util-utf8-browser" "3.10.0"
+    "@aws-sdk/util-utf8-node" "3.10.0"
+    fast-xml-parser "3.19.0"
+    tslib "^2.0.0"
+
 "@aws-sdk/client-sso@3.11.0":
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-sso/-/client-sso-3.11.0.tgz#1586e72438c017a81a0ad2ed3facc027aa364cea"
@@ -276,6 +316,15 @@
   dependencies:
     tslib "^1.8.0"
 
+"@aws-sdk/md5-js@3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/md5-js/-/md5-js-3.10.0.tgz#93e41fda0365f8858aa37b27c07e99289ef70de8"
+  integrity sha512-KawYhRt3e1ehZa8yS0Y6pKMI3ftasGZu7MIDucsTljsdaEVYcoVcGnqk9QMCyFZzoCafW/RB/p475JlpEPCFNA==
+  dependencies:
+    "@aws-sdk/types" "3.10.0"
+    "@aws-sdk/util-utf8-browser" "3.10.0"
+    tslib "^1.8.0"
+
 "@aws-sdk/middleware-content-length@3.10.0":
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-content-length/-/middleware-content-length-3.10.0.tgz#fcc43af904ef96177996c03cd21370a724c88291"
@@ -313,6 +362,15 @@
     react-native-get-random-values "^1.4.0"
     tslib "^1.8.0"
     uuid "^3.0.0"
+
+"@aws-sdk/middleware-sdk-sqs@3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-sdk-sqs/-/middleware-sdk-sqs-3.10.0.tgz#7810bfb14cd3aef0e893154a20f10db32d9dbd42"
+  integrity sha512-upKP6vfyquDm9V3Tl++YnTT0GYgFhAPI4MHYsP1tlnbDaoIObWZX6uX9itjW0GlGvLNidPUJv6KiY0bN6sFK1Q==
+  dependencies:
+    "@aws-sdk/types" "3.10.0"
+    "@aws-sdk/util-hex-encoding" "3.10.0"
+    tslib "^1.8.0"
 
 "@aws-sdk/middleware-serde@3.10.0":
   version "3.10.0"
@@ -2106,6 +2164,11 @@ fast-safe-stringify@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.0.7.tgz#124aa885899261f68aedb42a7c080de9da608743"
   integrity sha512-Utm6CdzT+6xsDk2m8S6uL8VHxNwI6Jub+e9NYTcAms28T84pTa25GJQV9j0CY0N1rM8hK4x6grpF2BQf+2qwVA==
+
+fast-xml-parser@3.19.0:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-3.19.0.tgz#cb637ec3f3999f51406dd8ff0e6fc4d83e520d01"
+  integrity sha512-4pXwmBplsCPv8FOY1WRakF970TjNGnGnfbOnLqjlYvMiF1SR3yOHyxMR/YCXpPTOspNF5gwudqktIP4VsWkvBg==
 
 fastq@^1.6.0:
   version "1.11.0"
