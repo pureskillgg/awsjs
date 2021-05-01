@@ -2,11 +2,18 @@
 
 [![GitHub Actions](https://github.com/pureskillgg/awsjs/workflows/main/badge.svg)](https://github.com/pureskillgg/awsjs/actions)
 
-Clients and tools for AWS.
+Clients and tools for building on AWS.
 
 ## Description
 
-TODO
+- Convenient wrappers around select methods from the [AWS SDK for JavaScript v3].
+- Method parameters normalized to accept camel case.
+- Standardized passing and parsing of request id (`reqId`).
+- Standardized structured logging using [Pino] via [mlabs-logger].
+
+[AWS SDK for JavaScript v3]: https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
+[Pino]: https://getpino.io/
+[mlabs-logger]: https://github.com/meltwater/mlabs-logger/
 
 ## Installation
 
