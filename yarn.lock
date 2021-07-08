@@ -68,7 +68,7 @@
   dependencies:
     tslib "^2.0.0"
 
-"@aws-sdk/client-dynamodb@^3.11.0":
+"@aws-sdk/client-dynamodb@^3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-dynamodb/-/client-dynamodb-3.20.0.tgz#43a8220cbd362e2d667dfa1f533e0becae90bc53"
   integrity sha512-pAMESJbwUGfqJqY7qHGiGiVJFdOC/yfS+l/MVfW0mRcdEnPzxgwF/LiHkCp10aurSFD1cZbXReGjNQGFTKbDVw==
@@ -108,7 +108,7 @@
     tslib "^2.0.0"
     uuid "^8.3.2"
 
-"@aws-sdk/client-eventbridge@^3.11.0":
+"@aws-sdk/client-eventbridge@^3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-eventbridge/-/client-eventbridge-3.20.0.tgz#5d253762b7be88f07128972a547b0c1259d3bf91"
   integrity sha512-dIpYU+ooUjlL9RaVJWgg76VoiSgGOiZW23W2M3elGDDAaOM7YpGfsywSaVfvzK7euGilJ3BjEAtwJncagFVr7g==
@@ -145,7 +145,7 @@
     "@aws-sdk/util-utf8-node" "3.20.0"
     tslib "^2.0.0"
 
-"@aws-sdk/client-lambda@^3.11.0":
+"@aws-sdk/client-lambda@^3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-lambda/-/client-lambda-3.20.0.tgz#c42e1e692a8d3c6950ceba9b8220811d69fc9c13"
   integrity sha512-ASxAeWMR0VMEwI3X47j/aO1oX3TybdaQ0FVCYyO0NBnZoYWshwDJLcVubsoVS5xPdmjm7k0splXXVzo3aAJhhA==
@@ -183,7 +183,7 @@
     "@aws-sdk/util-waiter" "3.20.0"
     tslib "^2.0.0"
 
-"@aws-sdk/client-s3@^3.11.0":
+"@aws-sdk/client-s3@^3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.20.0.tgz#18bb10fe05cb06d6729fb2f059e1fa7cab6a1a12"
   integrity sha512-ueyIICBi8i57KOfKk0mRNk0HV6wOgcj5p7TodrjuMJP0JAqxNG0NVsHSvowhb/8LPrDKTSlK0pikBn7niJv1GQ==
@@ -236,7 +236,7 @@
     fast-xml-parser "3.19.0"
     tslib "^2.0.0"
 
-"@aws-sdk/client-sqs@^3.11.0":
+"@aws-sdk/client-sqs@^3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-sqs/-/client-sqs-3.20.0.tgz#64b31fcf54366576f5272b76185275461997f885"
   integrity sha512-uQJI/Y7/4vOQNObxtBT30K/W803i10Mj+7zHmgur2Oy9M8fyAopY7/YpVKRsjmFVy49tqmOKLBKeTQWcaEKQ+w==
@@ -546,7 +546,7 @@
   dependencies:
     tslib "^2.0.0"
 
-"@aws-sdk/lib-dynamodb@^3.11.0":
+"@aws-sdk/lib-dynamodb@^3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/lib-dynamodb/-/lib-dynamodb-3.20.0.tgz#d3e68e2188781ba3667e4fac824258822c76c620"
   integrity sha512-wXJZ/Sz1nSdzvps4tMtPY6+bIYQZH6cB3xhauXwnwtgKz6vAezEL5bT2g/xYaF3bgTZP3PCHsn7WNipVirj/aA==
