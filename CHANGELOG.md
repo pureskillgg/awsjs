@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.3.0 / 2021-09-27
+
+### Added
+
+- `DynamodbDocumentClient.transactGet`.
+- `DynamodbDocumentClient.transactWrite`.
+
 ## 1.2.1 / 2021-08-30
 
 ### Changed
