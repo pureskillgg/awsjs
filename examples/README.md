@@ -25,19 +25,19 @@ Override any option with the corresponding environment variable:
 List all runnable examples with
 
 ```
-$ yarn run example
+$ npm run example
 ```
 
 Run provided examples with, e.g.,
 
 ```
-$ yarn run example red
+$ npm run example red
 ```
 
 Pass arguments to examples with
 
 ```
-$ yarn run example red req
+$ npm run example red req
 ```
 
 #### Debugging examples
@@ -45,7 +45,7 @@ $ yarn run example red req
 Debug examples with, e.g.,
 
 ```
-$ yarn run example:inspect req
+$ npm run example:inspect req
 ```
 
 For examples which run a single process and then exit,
