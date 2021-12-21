@@ -15,10 +15,10 @@
   "homepage": "https://github.com/pureskillgg/awsjs",
   "bugs": "https://github.com/pureskillgg/awsjs/issues",
   "repository": "pureskillgg/awsjs",
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "license": "MIT",
   "author": {
     "name": "PureSkill.gg",
-    "email": "secure@pureskill.gg"
+    "email": "contact@pureskill.gg"
   },
   "files": [
     "package-lock.json",
