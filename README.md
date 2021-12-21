@@ -1,5 +1,7 @@
 # AWS Node.js Toolkit
 
+[![npm](https://img.shields.io/npm/v/@pureskillgg/awsjs.svg)](https://www.npmjs.com/package/@pureskillgg/awsjs)
+[![docs](https://img.shields.io/badge/docs-online-informational)](https://pureskillgg.github.io/awsjs/)
 [![GitHub Actions](https://github.com/pureskillgg/awsjs/workflows/main/badge.svg)](https://github.com/pureskillgg/awsjs/actions)
 
 Clients and tools for building on AWS.
@@ -142,7 +144,7 @@ To submit a patch:
 
 ## License
 
-This npm package is Copyright (c) 2019-2021 FPS Critic, Inc.
+This npm package is licensed under the MIT license.
 
 ## Warranty
 
