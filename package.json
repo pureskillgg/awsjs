@@ -35,7 +35,7 @@
     "test:debug": "ava debug --break",
     "lint": "npm-run-all --parallel lint:*",
     "lint:prettier": "prettier --check --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yml|yaml|graphql)'",
-    "lint:js": "eslint --ignore-path .gitignore --ext .js .",
+    "lint:js": "eslint --ignore-path .gitignore --ext .js,.cjs,.mjs .",
     "lint:docs": "documentation lint 'lib/**/*.doc.js'",
     "preversion": "npm-run-all --parallel lint test",
     "postversion": "git push --follow-tags",
@@ -43,7 +43,7 @@
     "example:inspect": "node --inspect examples",
     "format": "npm-run-all --parallel format:*",
     "preformat": "prettier --write --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yml|yaml|graphql)'",
-    "format:js": "eslint --ignore-path .gitignore --fix --ext .js .",
+    "format:js": "eslint --ignore-path .gitignore --fix --ext .js,.cjs,.mjs .",
     "docs": "documentation serve --watch --github 'lib/**/*.doc.js'",
     "docs:build": "documentation build --format html --github --output .docs 'lib/**/*.doc.js'",
     "report": "c8 report"
