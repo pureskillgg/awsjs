@@ -1,6 +1,6 @@
 {
   "name": "@pureskillgg/awsjs",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Clients and tools for building on AWS.",
   "type": "module",
   "main": "index.js",
