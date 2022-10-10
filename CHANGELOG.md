@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.7.0 / 2022-10-09
+
+### Added
+
+- `S3Client.getObjectJson` will automatically decompress
+  body if `Content-Encoding` starts with `gzip`.
+- `S3Client.putObjectJson` will automatically gzip body if `Content-Encoding`
+  starts with `gzip`.
+
 ## 1.6.0 / 2022-03-25
 
 ### Added
