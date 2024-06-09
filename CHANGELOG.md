@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.8.0 / 2024-04-09
+
+### Added
+
+- `SchedulerClient`.
+
 ## 1.7.1 / 2022-10-09
 
 ### Fixed
