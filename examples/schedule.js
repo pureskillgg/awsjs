@@ -33,13 +33,23 @@ export const deleteSchedule =
 
 export const updateSchedule =
   ({ log }) =>
-  async (scheduleName, groupName) => {
+  async (scheduleName, groupName, arn, roleArn) => {
     const client = new SchedulerClient({
       log
     })
     return client.updateSchedule(scheduleName, {
-      scheduleExpression: 'rate(2 minute)',
-      groupName
+      scheduleExpression: 'rate(2 minutes)',
+      flexibleTimeWindow: { mode: 'OFF' },
+      input: { foo: 'bar' },
+      groupName,
+      target: {
+        arn,
+        roleArn,
+        eventBridgeParameters: {
+          detailType: 'example',
+          source: 'example'
+        }
+      }
     })
   }
 
