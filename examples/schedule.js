@@ -2,7 +2,7 @@ import { SchedulerClient } from '../index.js'
 
 export const createSchedule =
   ({ log }) =>
-  async (scheduleName, arn, roleArn) => {
+  async (scheduleName, groupName, arn, roleArn) => {
     const client = new SchedulerClient({
       log
     })
@@ -10,6 +10,7 @@ export const createSchedule =
       scheduleExpression: 'rate(1 minute)',
       flexibleTimeWindow: { mode: 'OFF' },
       input: { foo: 'bar' },
+      groupName,
       target: {
         arn,
         roleArn,
@@ -23,27 +24,30 @@ export const createSchedule =
 
 export const deleteSchedule =
   ({ log }) =>
-  async (scheduleName) => {
+  async (scheduleName, groupName) => {
     const client = new SchedulerClient({
       log
     })
-    return client.deleteSchedule(scheduleName)
+    return client.deleteSchedule(scheduleName, { groupName })
   }
 
 export const updateSchedule =
   ({ log }) =>
-  async (scheduleName) => {
+  async (scheduleName, groupName) => {
     const client = new SchedulerClient({
       log
     })
-    return client.updateSchedule(scheduleName, {})
+    return client.updateSchedule(scheduleName, {
+      scheduleExpression: 'rate(2 minute)',
+      groupName
+    })
   }
 
 export const getSchedule =
   ({ log }) =>
-  async (scheduleName) => {
+  async (scheduleName, groupName) => {
     const client = new SchedulerClient({
       log
     })
-    return client.getSchedule(scheduleName)
+    return client.getSchedule(scheduleName, { groupName })
   }
