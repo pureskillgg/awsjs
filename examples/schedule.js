@@ -2,11 +2,23 @@ import { SchedulerClient } from '../index.js'
 
 export const createSchedule =
   ({ log }) =>
-  async (scheduleName) => {
+  async (scheduleName, arn, roleArn) => {
     const client = new SchedulerClient({
       log
     })
-    return client.createSchedule(scheduleName, {})
+    return client.createSchedule(scheduleName, {
+      scheduleExpression: 'rate(1 minute)',
+      flexibleTimeWindow: { mode: 'OFF' },
+      input: { foo: 'bar' },
+      target: {
+        arn,
+        roleArn,
+        eventBridgeParameters: {
+          detailType: 'example',
+          source: 'example'
+        }
+      }
+    })
   }
 
 export const deleteSchedule =
