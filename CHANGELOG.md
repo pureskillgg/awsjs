@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- `SchedulerClient`.
+- `ScheduleClient`.
 
 ## 1.7.1 / 2022-10-09
 

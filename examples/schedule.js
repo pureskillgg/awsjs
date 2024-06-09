@@ -1,9 +1,9 @@
-import { SchedulerClient } from '../index.js'
+import { ScheduleClient } from '../index.js'
 
 export const createSchedule =
   ({ log }) =>
   async (scheduleName, groupName, arn, roleArn) => {
-    const client = new SchedulerClient({
+    const client = new ScheduleClient({
       log
     })
     return client.createSchedule(scheduleName, {
@@ -25,7 +25,7 @@ export const createSchedule =
 export const deleteSchedule =
   ({ log }) =>
   async (scheduleName, groupName) => {
-    const client = new SchedulerClient({
+    const client = new ScheduleClient({
       log
     })
     return client.deleteSchedule(scheduleName, { groupName })
@@ -34,7 +34,7 @@ export const deleteSchedule =
 export const updateSchedule =
   ({ log }) =>
   async (scheduleName, groupName, arn, roleArn) => {
-    const client = new SchedulerClient({
+    const client = new ScheduleClient({
       log
     })
     return client.updateSchedule(scheduleName, {
@@ -56,7 +56,7 @@ export const updateSchedule =
 export const getSchedule =
   ({ log }) =>
   async (scheduleName, groupName) => {
-    const client = new SchedulerClient({
+    const client = new ScheduleClient({
       log
     })
     return client.getSchedule(scheduleName, { groupName })
