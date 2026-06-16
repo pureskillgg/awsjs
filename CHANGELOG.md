@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.0.0 / 2026-06-08
+
+### Changed
+
+- **Breaking:** Migrate `@meltwater/*` dependencies to their
+  `@pureskillgg/*` re-publications (`mlabs-logger`, `phi`, `tau`,
+  and `examplr` for development). The resolved dependency tree no
+  longer contains any `@meltwater` packages.
+
 ## 1.8.0 / 2024-04-09
 
 ### Added
