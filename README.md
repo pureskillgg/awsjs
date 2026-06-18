@@ -6,16 +6,79 @@
 
 Clients and tools for building on AWS.
 
-## Description
+`@pureskillgg/awsjs` is a shared Node.js library of thin, opinionated wrappers around the [AWS SDK for JavaScript v3]. It gives every PureSkill.gg Node service one uniform, camelCase interface for S3, DynamoDB, SQS, Lambda, EventBridge, and EventBridge Scheduler — with automatic request-id threading, gzip/JSON helpers, and structured [Pino] logging baked in.
 
-- Convenient wrappers around select methods from the [AWS SDK for JavaScript v3].
-- Method parameters normalized to accept camel case.
-- Standardized passing and parsing of request id (`reqId`).
-- Standardized structured logging using [Pino] via [mlabs-logger].
+## What it does
 
-[AWS SDK for JavaScript v3]: https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
-[Pino]: https://getpino.io/
-[mlabs-logger]: https://github.com/meltwater/mlabs-logger/
+The package exports six client classes (re-exported through `index.js` → `lib/index.js` → `lib/clients/index.js`). Each class wraps exactly one AWS SDK v3 client and is constructed with a resource binding (a bucket, a `tableName`/`hashKey`/`rangeKey`, a `queueUrl`, a `functionName`, an `eventBusName`, or a scheduler `groupName`) plus an optional `reqId` (defaults to a UUID v4), a Pino child logger, and any SDK params.
+
+Every method follows the same shape:
+
+1. Build a child logger tagged with `client` / `class` / `method` / `reqId` and the resource binding.
+2. Log `start`.
+3. PascalCase the request keys (`keysToPascalCase`, via [@pureskillgg/phi]'s `renameKeysWith` + `change-case`) and inject the resource binding.
+4. Send the AWS command.
+5. camelCase the response (`keysToCamelCase`).
+6. Log `end` (or `error` / `fail` with the error) and return the normalized data.
+
+The result is a consistent camelCase API, automatic `reqId` propagation, and uniform structured logs across every AWS call in the platform.
+
+Notable per-client behavior:
+
+- **`S3Client`** — `putObjectJson` / `getObjectJson` serialize/deserialize JSON, set `ContentType: application/json`, transparently gzip/gunzip when `ContentEncoding` is `gzip` (detected by `isGzipped`, which splits the header on `,`, trims the first token, and checks it equals `gzip`), and stamp a `req-id` object **Metadata** header. `getObjectJson` returns both the raw body buffer and the parsed data.
+- **`DynamodbDocumentClient`** — wraps the DynamoDB Document client (`get` / `put` / `update` / `delete` / `query` / `transactGet` / `transactWrite`) with marshall options (remove undefined, convert class instances to map, no number wrapping). It validates at construction that `hashKey` is a non-empty string and that `rangeKey`, if present, is a non-empty string, and throws `DynamodbMissingKeyError` (`err_dynamodb_missing_key`) when input is missing the configured keys. `get` / `query` return `[data, rest]` tuples. It also exposes the raw `this.db` client and `this.tableName` as public escape hatches.
+- **`LambdaClient`** — `invokeJson` `Buffer`-encodes a JSON payload (injecting `reqId`), checks the HTTP `StatusCode` is 2xx (else `LambdaStatusCodeError`, `err_lambda_status_code`) and that there is no `FunctionError` (else `LambdaFunctionError`, `err_lambda_function_error`, carrying the decoded error payload), then decodes the JSON response payload.
+- **`SqsClient`** — `sendMessageJson` JSON-stringifies the body and attaches a `reqId` **String** message attribute (note: the attribute key is literally `reqId`, distinct from S3's `req-id` metadata key).
+- **`EventbridgeClient`** — `putEvents` stamps `EventBusName` on each entry, JSON-stringifies `detail`, normalizes the `time` field through [@pureskillgg/tau] (`fromIsoUtc` → `toIso`), drops nil fields, and throws `EventbridgeFailedEntriesError` (`err_eventbridge_failed_entries`) if `FailedEntryCount` is nonzero.
+- **`SchedulerClient`** — `getSchedule` / `createSchedule` / `updateSchedule` / `deleteSchedule` do CRUD on EventBridge Scheduler schedules with deep PascalCase/camelCase conversion of the nested `Target` object. The schedule-group `groupName` defaults to `default`.
+
+A small `createCache` helper (`lib/cache.js`) memoizes the underlying AWS SDK client instance per logical name so the raw client is reused across class instances within a process. ⚠️ See [Documentation](#documentation) — this caching has a footgun.
+
+## Pipeline role
+
+This is foundational infrastructure code, **not** a pipeline stage. It is published to npm as `@pureskillgg/awsjs` and imported by the platform's Node.js services (lambdas, handlers, web/API backends) wherever they need to talk to AWS — for example it is consumed by `csgo-profile` and other services.
+
+It sits *underneath* the CS2 coaching pipeline: any Node service that reads/writes match, demo, replay/csds, or assessment data in S3/DynamoDB, sends SQS messages, invokes lambdas, emits EventBridge events, or manages EventBridge schedules does so through these clients. The library itself produces no domain data and owns no cloud resources; the consuming service supplies the concrete bucket / table / queue / function identity at construction time.
+
+It consumes only the AWS SDK and sibling PSGG libraries: [@pureskillgg/phi] (FP / key-rename utilities), [@pureskillgg/tau] (ISO time), and [@pureskillgg/mlabs-logger] (logging).
+
+## Exported clients and helpers
+
+This library ships **no deployed AWS infrastructure** — there is no `serverless.yml`, no Terraform, no CDK, and no SAM template. It never hardcodes a table, queue, bucket, or function name; the consuming service passes the resource binding into the constructor. The real exports are:
+
+| Export | Source | Wraps / does |
+| --- | --- | --- |
+| `S3Client` | `lib/clients/s3.js` | `putObjectJson` / `getObjectJson` — JSON (de)serialization to/from S3 with transparent gzip/gunzip and a `req-id` metadata header. |
+| `DynamodbDocumentClient` | `lib/clients/dynamodb-document.js` | `get` / `put` / `update` / `delete` / `query` / `transactGet` / `transactWrite` over the DynamoDB Document client; key validation; `[data, rest]` tuples; throws `DynamodbMissingKeyError`. |
+| `LambdaClient` | `lib/clients/lambda.js` | `invokeJson` — `Buffer`-encoded JSON invoke with `reqId` injection; throws `LambdaStatusCodeError` / `LambdaFunctionError` on bad status or function error. |
+| `SqsClient` | `lib/clients/sqs.js` | `sendMessageJson` — JSON message body plus a `reqId` String message attribute. |
+| `EventbridgeClient` | `lib/clients/eventbridge.js` | `putEvents` — batch event publishing with `detail` JSON-encoding, ISO time normalization, and `FailedEntryCount` checking (`EventbridgeFailedEntriesError`). |
+| `SchedulerClient` | `lib/clients/scheduler.js` | `getSchedule` / `createSchedule` / `updateSchedule` / `deleteSchedule` — EventBridge Scheduler CRUD with nested `Target` case conversion. |
+| `keysToCamelCase` / `keysToPascalCase` | `lib/case.js` | Request/response key-case normalization used by every client (phi `renameKeysWith` + `change-case`). |
+| `createCache` | `lib/cache.js` | Memoizes underlying AWS SDK client instances per logical name to reuse connections. |
+
+### Error codes
+
+All client errors carry a stable `code` string for `instanceof`-free matching:
+
+- `err_dynamodb_missing_key` — `DynamodbMissingKeyError`
+- `err_lambda_status_code` — `LambdaStatusCodeError`
+- `err_lambda_function_error` — `LambdaFunctionError`
+- `err_eventbridge_failed_entries` — `EventbridgeFailedEntriesError`
+
+## Logs and observability
+
+This is a **pure published npm library** — it owns no CloudWatch log groups, DLQs, Step Functions, Sentry projects, or EventBridge buses. There is nothing in this repo to look up in CloudWatch.
+
+- **Where its logs actually appear:** in the **consuming service's** logs. The library logs through [@pureskillgg/mlabs-logger] (Pino), created with `createLogger()` and child-scoped with `{ client, class, method, reqId, queueUrl/bucket/table, messageId }`. So to find a given AWS call, look at the log group of whatever lambda/service imported the client (e.g. `csgo-*-prod-*`), filtered by `reqId`.
+- **Normal logs:** `start` and `end` events at `info`; payloads at `debug`.
+- **Error logs:** each client method wraps the SDK call in `try`/`catch`, logs `log.error({ err }, 'fail')`, and re-throws. The error then propagates to the caller, where the caller's own infrastructure (Lambda DLQ, Step Functions state, Sentry) is where it ultimately lands.
+- **Verbosity:** standard Pino `LOG_LEVEL` / `level` env behavior applies in the consuming process.
+- **CI logs for this repo:** build/test output lives in this repo's [GitHub Actions], not in AWS.
+
+## Documentation
+
+- [Client caching, key-case, and error conventions](docs/conventions.md) — the shared-client memoization footgun in `createCache`, the PascalCase-in / camelCase-out request lifecycle, and the per-client error-code contract.
 
 ## Installation
 
@@ -158,3 +221,10 @@ loss of use, data, or profits; or business interruption) however caused and on
 any theory of liability, whether in contract, strict liability, or tort
 (including negligence or otherwise) arising in any way out of the use of this
 software, even if advised of the possibility of such damage.
+
+[AWS SDK for JavaScript v3]: https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
+[Pino]: https://getpino.io/
+[@pureskillgg/phi]: https://github.com/pureskillgg/phi
+[@pureskillgg/tau]: https://github.com/pureskillgg/tau
+[@pureskillgg/mlabs-logger]: https://github.com/pureskillgg/mlabs-logger
+[mlabs-logger]: https://github.com/meltwater/mlabs-logger/
