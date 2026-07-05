@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "exports": {
-    "import": "./index.js"
+    "import": "./index.js",
+    "default": "./index.js"
   },
   "module": "index.js",
   "sideEffects": false,
@@ -14,13 +15,17 @@
   ],
   "homepage": "https://github.com/pureskillgg/awsjs",
   "bugs": "https://github.com/pureskillgg/awsjs/issues",
-  "repository": "pureskillgg/awsjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pureskillgg/awsjs.git"
+  },
   "license": "MIT",
   "author": {
     "name": "PureSkill.gg",
     "email": "contact@pureskill.gg"
   },
   "files": [
+    "package-lock.json",
     "index.js",
     "lib",
     "data",
@@ -32,21 +37,24 @@
     "test:update": "ava --update-snapshots",
     "test:watch": "ava --watch",
     "test:debug": "ava debug --break",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.cjs,.mjs .",
-    "prelint": "prettier --check --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yml|yaml|graphql)'",
-    "postlint": "documentation lint 'lib/**/*.doc.js'",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:js": "eslint .",
+    "lint:prettier": "prettier --check --ignore-path .gitignore '**/*.{js,cjs,mjs,json,yml,yaml,graphql}'",
+    "lint:docs": "documentation lint 'lib/**/*.doc.js'",
+    "prepublishOnly": "npm-run-all --parallel lint test",
+    "preversion": "npm-run-all --parallel lint test",
     "postversion": "git push --follow-tags",
     "example": "node examples",
     "example:inspect": "node --inspect examples",
-    "format": "eslint --ignore-path .gitignore --fix --ext .js,.cjs,.mjs .",
-    "preformat": "prettier --write --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yml|yaml|graphql)'",
+    "format": "npm-run-all --parallel format:*",
+    "preformat": "prettier --write --ignore-path .gitignore '**/*.{js,cjs,mjs,json,yml,yaml,graphql}'",
+    "format:js": "eslint --fix .",
     "docs": "documentation serve --watch --github 'lib/**/*.doc.js'",
     "docs:build": "documentation build --format html --github --output .docs 'lib/**/*.doc.js'",
     "report": "c8 report"
   },
   "engines": {
-    "node": ">=22.0.0",
-    "npm": ">= 8.1.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.20.0",
@@ -57,25 +65,23 @@
     "@aws-sdk/client-sqs": "^3.20.0",
     "@aws-sdk/lib-dynamodb": "^3.20.0",
     "@aws-sdk/util-dynamodb": "^3.20.0",
-    "@pureskillgg/mlabs-logger": "^9.1.1",
-    "@pureskillgg/phi": "^5.0.0",
-    "@pureskillgg/tau": "^3.0.0",
-    "change-case": "^4.1.2",
-    "get-stream": "^6.0.1",
-    "uuid": "^9.0.0"
+    "@pureskillgg/mlabs-logger": "^10.0.0",
+    "@pureskillgg/phi": "^6.0.0",
+    "@pureskillgg/tau": "^4.0.0",
+    "change-case": "^5.4.4",
+    "get-stream": "^9.0.1",
+    "uuid": "^14.0.1"
   },
   "devDependencies": {
-    "@pureskillgg/examplr": "^7.0.0",
-    "ava": "^4.0.1",
-    "c8": "^7.11.0",
-    "documentation": "^14.0.0",
-    "eslint": "^8.9.0",
-    "eslint-config-prettier": "^8.4.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "prettier": "^2.3.0",
-    "testdouble": "^3.16.1"
+    "@pureskillgg/examplr": "^8.0.1",
+    "ava": "^8.0.1",
+    "c8": "^11.0.0",
+    "documentation": "^14.0.3",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "neostandard": "^0.13.0",
+    "npm-run-all2": "^9.0.2",
+    "prettier": "^3.9.4",
+    "testdouble": "^3.20.2"
   }
 }
