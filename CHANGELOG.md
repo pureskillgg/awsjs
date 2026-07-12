@@ -14,6 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   with `SerializationException: STRING_VALUE can not be converted to milliseconds
   since epoch`, so any event carrying a `time` failed since the v3 upgrade.
 
+## 3.0.2
+
+### Changed
+
+- Bump the runtime dependencies to their current majors.
+- Modernize the development toolchain (ESLint 9 flat config).
+
+## 3.0.1
+
+- Version bump; no functional changes.
+
 ## 3.0.0
 
 ### Changed
