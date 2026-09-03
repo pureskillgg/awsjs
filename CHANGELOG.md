@@ -9,18 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Harden the deploy workflows: pass the version input through `env:` instead of interpolating it into the shell line; give the dispatch and tag workflows readable run titles; give every job a timeout.
-
-- GitHub Actions updated to Node 24 runtimes: `actions/checkout` v5 to v7; `actions/setup-node` v5 to v6.
+- Harden the deploy workflows.
+- Update GitHub Actions to Node 24 runtimes.
 
 ## 3.0.3
 
 ### Fixed
 
-- `EventbridgeClient.putEvents`: send the entry `Time` as a `Date` rather than an
-  ISO string. Under AWS SDK v3, `PutEventsCommand` rejects a string timestamp
-  with `SerializationException: STRING_VALUE can not be converted to milliseconds
-  since epoch`, so any event carrying a `time` failed since the v3 upgrade.
+- `EventbridgeClient.putEvents` entry `Time` serialization.
 
 ## 3.0.2
 
@@ -37,20 +33,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- **Breaking:** Require Node.js 22+ — `engines.node` is now `>=22.0.0`,
-  dropping support for Node versions below 22.
-- Upgrade the development toolchain to Node.js 22: `.nvmrc`, the CI setup
-  action default, and the devcontainer now target Node 22. The CI test/lint
-  matrix runs on Node 20 and 22 (dropping EOL 14/16).
+- (**Breaking**) Require Node.js 22+.
+- Upgrade the development toolchain to Node.js 22.
 
 ## 2.0.0 / 2026-06-08
 
 ### Changed
 
-- **Breaking:** Migrate `@meltwater/*` dependencies to their
-  `@pureskillgg/*` re-publications (`mlabs-logger`, `phi`, `tau`,
-  and `examplr` for development). The resolved dependency tree no
-  longer contains any `@meltwater` packages.
+- (**Breaking**) Migrate `@meltwater/*` dependencies to `@pureskillgg/*`.
 
 ## 1.8.0 / 2024-04-09
 
