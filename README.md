@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@pureskillgg/awsjs.svg)](https://www.npmjs.com/package/@pureskillgg/awsjs)
 [![docs](https://img.shields.io/badge/docs-online-informational)](https://dev.pureskill.gg/awsjs/)
-[![GitHub Actions](https://github.com/pureskillgg/awsjs/workflows/main/badge.svg)](https://github.com/pureskillgg/awsjs/actions)
+[![GitHub Actions](https://github.com/pureskillgg/awsjs/actions/workflows/main.yml/badge.svg)](https://github.com/pureskillgg/awsjs/actions)
 
 Clients and tools for building on AWS.
 
@@ -163,7 +163,7 @@ Publishing may be triggered using on the web
 using a [workflow_dispatch on GitHub Actions].
 
 [npm-version]: https://docs.npmjs.com/cli/version
-[workflow_dispatch on GitHub Actions]: https://github.com/pureskillgg/awsjs/actions?query=workflow%3Aversion
+[workflow_dispatch on GitHub Actions]: https://github.com/pureskillgg/awsjs/actions/workflows/version.yml
 
 ## GitHub Actions
 
